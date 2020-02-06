@@ -33,18 +33,23 @@ public class JobTest {
     public void testJobConstructorSetsAllFields() {
         assertTrue(testJob.getName() instanceof String);
         assertEquals("Product Tester", testJob.getName());
-        assertTrue(testJob.getName() instanceof Employer);
-        assertEquals("ACME", testJob.getName());
-        assertTrue(testJob.getName() instanceof Location);
-        assertEquals("Desert", testJob.getName());
-        assertTrue(testJob.getName() instanceof PositionType);
-        assertEquals("Quality control", testJob.getName());
-        assertTrue(testJob.getName() instanceof CoreCompetency);
-        assertEquals("Persistence",  testJob.getName());
+        assertTrue(testJob.getEmployer() instanceof Employer);
+        assertEquals("ACME", testJob.getEmployer());
+        assertTrue(testJob.getLocation() instanceof Location);
+        assertEquals("Desert", testJob.getLocation());
+        assertTrue(testJob.getPositionType() instanceof PositionType);
+        assertEquals("Quality control", testJob.getPositionType());
+        assertTrue(testJob.getCoreCompetency() instanceof CoreCompetency);
+        assertEquals("Persistence",  testJob.getCoreCompetency());
     }
 
     @Test
     public void testJobsForEquality() {
         assertFalse(testJob.equals(testJobCopy));
+    }
+
+    @Test
+    public void toString() {
+
     }
 }
