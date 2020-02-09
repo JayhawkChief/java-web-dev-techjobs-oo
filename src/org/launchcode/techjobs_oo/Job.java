@@ -23,7 +23,12 @@ public class Job {
 
     public Job(String name, Employer employer, Location location, PositionType positionType,
                CoreCompetency coreCompetency) {
-        this.name = name;
+        this();
+        if (name.equals("")) {
+            this.name = "Data not available";
+        } else {
+            this.name = name;
+        }
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
@@ -38,13 +43,12 @@ public class Job {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id &&
-                name.equals(job.name);
+        return id == job.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id);
     }
 
 
@@ -59,7 +63,7 @@ public class Job {
         this.name = name;
     }
 
-    public Employer getEmployer() {
+    public JobField getEmployer() {
         return employer;
     }
 
@@ -67,7 +71,7 @@ public class Job {
         this.employer = employer;
     }
 
-    public Location getLocation() {
+    public JobField getLocation() {
         return location;
     }
 
@@ -75,7 +79,7 @@ public class Job {
         this.location = location;
     }
 
-    public PositionType getPositionType() {
+    public JobField getPositionType() {
         return positionType;
     }
 
@@ -83,7 +87,7 @@ public class Job {
         this.positionType = positionType;
     }
 
-    public CoreCompetency getCoreCompetency() {
+    public JobField getCoreCompetency() {
         return coreCompetency;
     }
 
@@ -93,5 +97,14 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+    public String toString() {
+        if (location == null) {
+            return "\nId: OOPS! This job does not seem to exist.\n";
+        } else {
+            return "\nId: "+this.getId()+"\nName: "+name+"\nEmployer: "+employer+"\nLocation: "+location+"\nPosition" +
+                    " Type: "+positionType+"\nCore Competency: "+coreCompetency+"\n";
+        }
     }
 }
